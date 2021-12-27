@@ -1,0 +1,109 @@
+
+@use "sass:math";
+@use "sass:map";
+
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($bg,25%);
+  }
+}
+
+.btn {
+  color:$Neutral-100;
+  text-decoration:none;
+  padding:8px 10px 6px 10px;
+  border-radius:3px;
+  @include button-bg($Supporting-4-900);
+  border:none;
+  font-size: .85rem;
+  cursor:pointer;
+}
+
+
+
+
+$enable-shadows:true;
+@mixin box-shadow($shadow...) {
+  @if $enable-shadows {
+    $result: ();
+
+    @each $value in $shadow {
+      @if $value != null {
+        $result: append($result, $value, "comma");
+      }
+      @if $value == none and length($shadow) > 1 {
+        @warn "The keyword 'none' must be used as a single argument.";
+      }
+    }
+
+    @if (length($result) > 0) {
+      box-shadow: $result;
+    }
+  }
+}
+
+
+
+@mixin add-border-shadow(){
+  box-shadow: 0 0 0 1px rgba(67,41,163,.1), 0 1px 8px 0 rgba(67,41,163,.1);
+}
+
+
+@mixin add-main-font(){
+  font-family: 'Roboto', sans-serif;
+}
+
+@mixin add-mono-font(){
+  font-family: 'Cousine', monospace;
+}
+
+
+// ============================================
+// ROUTE CREATOR
+
+@mixin add-container-shadow(){
+  box-shadow: 2px 2px 3px rgba(0,0,0,.27);
+}
+
+@mixin add-route-creator-border(){
+  //border: .5px solid #3A8DC2;
+  //border: 1px solid  $clr-route-creator-blue;// RGBA(58, 141, 194, .4);
+  border: 1px solid  RGBA(58, 141, 194, .8);
+}
+
+
+// ============ END ROUTE CREATOR =============
+$breakpoints: (
+        mobile:  320px,
+        tablet:  740px,
+        desktop: 980px,
+        wide:    1300px,
+        xtraLarge: 1920px
+);
+
+@mixin screenQuery($queryType, $size){
+  // until = max
+  // from = min
+
+  $pixelSize: map.get($breakpoints, $size);
+  @if ($pixelSize == null){
+    @warn "screenQuery size needs to be a $breakpoints value ('mobile,'tablet','desktop','wide','xtraLarge') ";
+  }
+
+  @if $queryType == "min" {
+    @media (min-width: $pixelSize){@content;}
+  } @else if $queryType == "max"{
+    @media (max-width: $pixelSize){@content;}
+  } @else {
+    @warn "SASS WARNING: screenQuery, queryType, '#{$queryType}' needs to be either 'min' or 'max'";
+  }
+
+  //@error 'media query values are incorrect';
+
+
+}

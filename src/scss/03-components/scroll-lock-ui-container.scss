@@ -1,0 +1,101 @@
+
+#scroll-lock-ui-container{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    right:0;
+    bottom:0;
+    margin:0;
+    padding:0;
+    pointer-events: none;
+    //background: rgba($color: #000000, $alpha: 1);
+
+    div.main-header{
+        position:relative;
+        width:100%;
+        height: 62px;
+        //background: $Primary-800;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        align-content: center;
+        margin:0;
+        padding:0;
+        pointer-events: all;
+        button{
+            cursor:pointer;
+        }
+
+        nav{
+            position: relative;
+            width: 100%;
+            max-width: 1280px;
+            top: 0;
+            margin: 0;
+            //left: -8px;
+            height: 100%;
+            background: $Primary-800;
+            z-index: 100;
+
+            padding: 0 2rem;
+            justify-content: left;
+            align-items: center;
+            display: flex;
+
+            button{
+                position: relative;
+                margin:0 .5rem 0 0;
+                cursor: pointer;
+                pointer-events: all;;
+                opacity:.9;
+                &:hover{
+                    opacity: 1;;
+                }
+
+                &.selected{
+                    pointer-events: none;
+                    opacity: .8;
+                }
+            }
+
+
+        }
+
+
+    }
+
+    #scroll-item-container{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        //background: pink;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
+      &.open-modal{
+
+        &::after{
+          position: absolute;
+          top:0;
+          right:0;
+          bottom:0;
+          left:0;
+          pointer-events: none;
+          content: '\00a0';
+          background: rgba(0,0,0,.3);
+        }
+
+      }
+
+
+
+    }
+
+
+}

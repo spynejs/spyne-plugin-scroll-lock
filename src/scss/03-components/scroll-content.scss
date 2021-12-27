@@ -1,0 +1,151 @@
+
+.card-view{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  overflow-y: scroll;
+  pointer-events: all;
+  z-index: 234;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+
+  @keyframes animHeight {
+    0% {
+      height: 250px;
+    }
+
+    90%{
+      height: 1400px;
+    }
+
+
+    100%{
+      height: 1800px;
+    }
+
+  }
+
+
+
+  &.start-anim{
+    overflow: hidden;;
+    height: 250px;
+
+    .main-scroll-content {
+
+      @include screenQuery('min', 'wide') {
+
+
+      }
+
+    }
+
+  }
+
+
+  &.animated{
+    height: 250px;
+    .content {
+
+    }
+
+    overflow-y: auto;
+    animation: 4.8s ease .5s animHeight;
+    animation-fill-mode: forwards;
+    .main-scroll-content {
+
+
+    }
+  }
+
+
+}
+
+
+.content{
+    position:relative;
+    max-width: 1280px;
+    background: $Neutral-050;
+    padding: 12vh 2rem 2vh 2rem;
+
+
+
+    .scrollable-item{
+      position: relative;
+      padding: 50px 2rem;
+
+    }
+
+
+    &.modal-content, &.card-content{
+        position:relative;
+        max-width: 100%;
+        background: $Neutral-100;
+      padding-top:0;
+      pointer-events: all;
+      border: 1px solid $Neutral-200;
+      border-bottom: 20px solid $Neutral-100;
+      z-index: 10;
+
+        div.header{
+            width: 100%;
+            height: 50px;
+            pointer-events:all;
+            display: flex;
+            flex-direction: column;
+            position:sticky;
+            top:0;
+            background: $Neutral-100;
+            z-index: 100;
+
+
+
+            button.btn-close{
+              position:relative;
+              top: 10px;
+                cursor:pointer;
+                align-self: flex-end;;
+            }
+
+        }
+
+    }
+
+    &.modal-content{
+        width: 60%;
+        min-width: 360px;
+        max-width: 1080px;
+        max-height: 80vh;
+        top:12vh;
+        overflow-y: auto;
+
+      div.header{
+          padding: 0 2rem;
+        align-content: space-between;;
+        button{
+          position: absolute;
+          top:24px;
+          max-width: 120px;
+        }
+
+      }
+
+    }
+
+    &.card-content{
+        width: 100%;
+      top:52px;
+        max-width:1280px;
+
+
+
+    }
+
+
+}

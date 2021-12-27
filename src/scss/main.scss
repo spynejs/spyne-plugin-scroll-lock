@@ -1,0 +1,144 @@
+@import "02-variables/palette";
+@import "01-vendors/normalize";
+@import "02-variables/mixins";
+@import "03-components/scroll-content";
+@import "03-components/scroll-lock-ui-container";
+@import "spyne-plugin-scroll-lock";
+
+
+
+
+body#spyne-plugin-scroll-lock-body{
+  font-family: sans-serif;
+
+  background:  #222;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+
+  @include screenQuery('min', 'xtraLarge'){
+   // margin-left: var(--scroll-lock-margin);
+  }
+
+  .btn-close {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+  }
+  .btn-close:hover {
+    opacity: 1;
+  }
+  .btn-close:before, .btn-close:after {
+    position: absolute;
+    top: -2px;
+    left: 13px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+  }
+  .btn-close:before {
+    transform: rotate(45deg);
+  }
+  .btn-close:after {
+    transform: rotate(-45deg);
+  }
+
+
+
+   main#spyne-plugin-scroll-lock-preview{
+    position:relative;
+    top:0;
+    left:0;
+    //width:100%;
+    height:100%;
+    max-width: 1920px;
+    align-self: center;
+    justify-self: center;
+    border: 0;
+    margin: 0;
+
+      margin-left: var(--scroll-lock-margin);
+
+
+
+    #dynamic-app-ui{
+      position: fixed;
+    }
+
+
+    .view-grid{
+      position: relative;
+      margin:0;
+      padding: 0;
+      background: #666;
+
+      .test-box{
+        position: relative;
+        background: darkslateblue;
+        display: flex;
+        span{
+          position: relative;
+          content:"TEST";
+          width: 100%;
+          min-width: 10px;
+          min-height: 10px;
+          height: 100%;
+          background: #666;
+        }
+
+        &:nth-child(odd){
+          border: solid 1px #333;
+        }
+
+      }
+
+
+    }
+
+  }
+
+
+
+}
+
+
+
+
+//$gutter: 100px;
+* {
+  box-sizing: border-box;
+}
+
+
+p,
+li,
+h1,
+h2,
+h3,
+h4 {
+  // Help prevent overflow of long words/names/URLs
+  word-break: break-word;
+
+  // Optional, not supported for all languages
+  hyphens: auto;
+}
+
+
+// Learn more about this technique:
+// @link https://moderncss.dev/solutions-to-replace-the-12-column-grid/
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+

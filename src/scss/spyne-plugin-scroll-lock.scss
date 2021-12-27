@@ -1,0 +1,52 @@
+#proxy-scrollbar{
+
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width: 100vw;
+  //width: 100vw;
+  height: calc(100vh + 1px);
+  //background: rgba(122,180,222,.8);
+  overflow-y:scroll;;
+  //opacity: .5;
+  z-index: 1000000;
+  pointer-events: none;
+  visibility: hidden;;
+  &.reveal{
+    visibility: visible;;
+
+  }
+
+
+}
+
+
+
+:root{
+  --data-color-primary: #ffcc00;
+  --data-color-secondary: #4b4b4b;
+  --scroll-lock-margin:0px;
+  --scroll-lock-padding:0px;
+}
+
+
+
+.adjust-scroll-lock{
+  padding-right: var(--scroll-lock-padding) !important;
+}
+
+.adjust-scroll-lock-padding{
+  padding-right: var(--scroll-lock-padding) !important;
+
+}
+
+.adjust-scroll-lock-margin{
+  margin-left:  var(--scroll-lock-margin) !important;
+}
+
+
+.adjust-scroll-lock-width{
+  margin-left:  var(--scroll-lock-width) !important;
+}
